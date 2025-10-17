@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Returns Policy - Canvas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="returnsCanvas" width="800" height="1000"></canvas>
+  <button id="downloadBtn">Baixar como Imagem</button>
+
+  <script>
+    const canvas = document.getElementById("returnsCanvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#222";
+    ctx.font = "bold 28px Arial";
+    ctx.fillText("Returns Policy", 50, 60);
+
+    let y = 120;
+    ctx.font = "16px Arial";
+
+    function addParagraph(text, lineHeight = 22) {
+      let words = text.split(" ");
+      let line = "";
+      for (let i = 0; i < words.length; i++) {
+        let testLine = line + words[i] + " ";
+        let metrics = ctx.measureText(testLine);
+        if (metrics.width > 700) {
+          ctx.fillText(line, 50, y);
+          line = words[i] + " ";
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, 50, y);
+      y += lineHeight * 2;
+    }
+
+    addParagraph("We value our customers and want you to be fully satisfied with your purchase. If for any reason you are not satisfied with a product, please review our return policy below.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("1. Eligibility for Returns", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("Products may be eligible for return within 30 days of the delivery date. To qualify, items must be unused, in their original packaging, and accompanied by proof of purchase.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("2. Non-Returnable Items", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("For safety and hygiene reasons, opened or partially used supplements cannot be returned. Promotional or free items are also non-returnable.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("3. Return Process", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("To initiate a return, please contact our customer support team through the Contact Page. We will provide you with return instructions and the appropriate return address.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("4. Refunds", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("Once we receive and inspect your returned product, we will process your refund. Refunds will be issued to the original payment method within 7–10 business days. Shipping fees are non-refundable.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("5. Damaged or Defective Items", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("If you receive a damaged or defective product, please notify us within 7 days of delivery. We will replace the item or issue a refund at no additional cost.");
+
+    ctx.font = "bold 18px Arial";
+    ctx.fillText("6. Contact", 50, y); y += 30;
+    ctx.font = "16px Arial";
+    addParagraph("For any questions about our returns policy, please contact our support team at the details provided on our website.");
+
+    ctx.font = "italic 14px Arial";
+    ctx.fillText("Last updated: 2025-08-26", 50, y + 20);
+
+    // Botão de download
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      const link = document.createElement("a");
+      link.download = "returns-policy.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  </script>
+</body>
+</html>

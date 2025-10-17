@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Age Check</title>
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #222;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .container {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 60px 40px;
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #555;
+    }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      background: linear-gradient(135deg, #28a745, #34d058);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 22px 50px;
+      font-size: 26px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(40,167,69,0.3);
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(40,167,69,0.4);
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    .alert {
+      margin-top: 35px;
+      color: #d00;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    footer {
+      font-size: 9px;
+      color: #aaa;
+      max-width: 700px;
+      text-align: center;
+      line-height: 1.3;
+      margin-top: 200px;
+      opacity: 0.4;
+      padding: 40px 10px 10px 10px;
+    }
+    footer a {
+      color: #999;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 40px 20px;
+        margin: 0 10px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+      button {
+        width: 100%;
+        font-size: 22px;
+        padding: 18px 0;
+      }
+      .alert {
+        font-size: 14px;
+        margin-top: 25px;
+      }
+      footer {
+        font-size: 8px;
+        line-height: 1.2;
+        margin-top: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <h1>Before You Watch: Quick Age Check</h1>
+      <p>Select your age group to continue to the video.</p>
+      <div class="buttons">
+        <button onclick="redirect('35')">+35</button>
+        <button onclick="redirect('55')">+55</button>
+        <button onclick="redirect('65')">+65</button>
+      </div>
+      <div class="alert">⏳ This page may go offline at any moment ⏳</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      Disclaimer: This site is not part of the YouTube or Google LLC website. It is also supported and sponsored by YouTube in no way. YouTube is a registered trademark of Google LLC.<br><br>
+      Total or partial reproduction, distribution or modification of this website and its contents is strictly prohibited. All content is protected by copyright and intellectual property laws applicable in all countries.<br><br>
+      The author reserves the right to take legal action in the event of non-compliance. If there is anything possible for presenting this program with precision. It is not guaranteed that you will obtain the same results if you achieve the aforementioned abundance.<br><br>
+      © 2025 Angel Septenary. All rights reserved.<br><br>
+      <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a> | <a href="#">Return Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    const VIDEO_URL = 'https://tubplus.online/as'; // Updated video link
+
+    function redirect(age) {
+      const url = new URL(VIDEO_URL);
+      url.searchParams.set('age', age);
+      window.location.href = url.toString();
+    }
+  </script>
+</body>
+</html>
